@@ -8,6 +8,7 @@ import { filters, sites, type SiteTag } from './data/sites'
 
 function App() {
   const [activeFilters, setActiveFilters] = useState<SiteTag[]>([])
+  const [isContactVisible, setIsContactVisible] = useState(false)
 
   const visibleSites = useMemo(() => {
     return sites
@@ -15,7 +16,7 @@ function App() {
       .sort((a, b) => b.priority - a.priority || a.name.localeCompare(b.name))
   }, [activeFilters])
 
-  const recommendedCount = sites.filter((site) => site.kind === 'recommended').length
+  const recommendedCount = sites.filter((site) => site.tags.includes('推荐')).length
   const highlightedSites = useMemo(() => {
     return sites
       .filter((site) => site.highlight)
@@ -49,15 +50,16 @@ function App() {
         <div className="hero-meta" aria-label="站点概况">
           <span>共收录 {sites.length} 个站点</span>
           <span>{recommendedCount} 个推荐项</span>
-          <a href={`mailto:${siteConfig.contactEmail}`}>
+          <button
+            aria-expanded={isContactVisible}
+            onClick={() => setIsContactVisible((currentValue) => !currentValue)}
+            type="button"
+          >
             <Mail aria-hidden="true" size={16} />
             联系收录
-          </a>
-          <a
-            href={`https://github.com/search?q=${siteConfig.repositoryName}`}
-            rel="noreferrer"
-            target="_blank"
-          >
+          </button>
+          {isContactVisible ? <span className="contact-email">{siteConfig.contactEmail}</span> : null}
+          <a href={siteConfig.repositoryUrl} rel="noreferrer" target="_blank">
             <GitBranch aria-hidden="true" size={16} />
             GitHub 项目
           </a>

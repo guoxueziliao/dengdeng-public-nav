@@ -5,5 +5,6 @@ export const siteConfig = {
   contactEmail: 'yongyuandejunzhu@gmail.com',
   notice:
     '如有公益站补充、链接失效、关闭注册或信息不准确的情况，可以联系 yongyuandejunzhu@gmail.com 反馈。',
+  repositoryUrl: 'https://github.com/guoxueziliao/dengdeng-public-nav',
   repositoryName: 'dengdeng-public-nav',
 }
