@@ -1,6 +1,8 @@
 import { Clock3, ExternalLink, LockKeyhole, ShieldCheck, Sparkles } from 'lucide-react'
 import type { PublicSite, RegistrationStatus, SiteTag } from '../data/sites'
 
+const tagOrder: SiteTag[] = ['推荐', '免费模型', '限注', '试用额度', '签到', '生图', '稳定', '新站']
+
 const tagClass: Record<SiteTag, string> = {
   推荐: 'tag-recommend',
   免费模型: 'tag-free-model',
@@ -27,27 +29,23 @@ type SiteCardProps = {
 }
 
 export function SiteCard({ site }: SiteCardProps) {
+  const visibleTags = tagOrder.filter((tag) => site.tags.includes(tag))
+
   return (
     <article className="site-card" data-kind={site.kind}>
       <div className="site-card__topline">
         <div>
           <h2>{site.name}</h2>
           <p className="site-domain">{site.domain}</p>
+          <p className="quota-rate">
+            <span>倍率</span>
+            {site.usdQuotaCost}
+          </p>
         </div>
         <div className="site-tags" aria-label={`${site.name} 标签`}>
-          {site.kind === 'official' ? (
-            <span className="tag tag-official" title="官方入口">
-              官方
-            </span>
-          ) : null}
-          {site.kind === 'recommended' ? (
-            <span className="tag tag-recommend" title="推荐">
-              <Sparkles aria-hidden="true" size={13} />
-              推荐
-            </span>
-          ) : null}
-          {site.tags.map((tag) => (
+          {visibleTags.map((tag) => (
             <span className={`tag ${tagClass[tag]}`} key={tag}>
+              {tag === '推荐' ? <Sparkles aria-hidden="true" size={13} /> : null}
               {tag === '稳定' ? <ShieldCheck aria-hidden="true" size={13} /> : null}
               {tag}
             </span>
@@ -72,17 +70,17 @@ export function SiteCard({ site }: SiteCardProps) {
         </div>
       ) : null}
       <p className="site-summary">{site.summary}</p>
+      <p className="site-description">{site.description}</p>
+      <a className="open-link" href={site.url} rel="noreferrer" target="_blank">
+        打开链接
+        <ExternalLink aria-hidden="true" size={16} />
+      </a>
       {site.dengdengSays ? (
         <div className="dengdeng-says">
           <span>蹬蹬说</span>
           <p>{site.dengdengSays}</p>
         </div>
       ) : null}
-      <p className="site-description">{site.description}</p>
-      <a className="open-link" href={site.url} rel="noreferrer" target="_blank">
-        打开链接
-        <ExternalLink aria-hidden="true" size={16} />
-      </a>
     </article>
   )
 }

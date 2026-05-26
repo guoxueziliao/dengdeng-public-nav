@@ -276,6 +276,25 @@
   overflow-wrap: anywhere;
 }
 
+.quota-rate {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin: 8px 0 0;
+  border: 1px solid rgba(148, 163, 184, 0.24);
+  border-radius: 999px;
+  background: rgba(15, 23, 42, 0.72);
+  color: #e2e8f0;
+  padding: 4px 9px;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.quota-rate span {
+  color: #94a3b8;
+  font-weight: 750;
+}
+
 .site-tags {
   display: flex;
   flex-wrap: wrap;
@@ -335,11 +354,6 @@
 .tag-free-model {
   background: rgba(59, 130, 246, 0.18);
   color: #93c5fd;
-}
-
-.tag-official {
-  background: rgba(34, 197, 94, 0.16);
-  color: #86efac;
 }
 
 .registration-note {
@@ -405,7 +419,7 @@
 }
 
 .dengdeng-says {
-  margin: 0 0 14px;
+  margin: 14px 0 0;
   border-left: 3px solid rgba(125, 211, 252, 0.82);
   border-radius: 6px;
   background: rgba(14, 165, 233, 0.09);
@@ -442,6 +456,7 @@
   gap: 8px;
   width: fit-content;
   min-height: 42px;
+  margin-top: auto;
   border-radius: 8px;
   background: #183258;
   color: #ffffff;
