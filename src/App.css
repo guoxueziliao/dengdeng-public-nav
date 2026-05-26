@@ -404,6 +404,29 @@
   line-height: 1.65;
 }
 
+.dengdeng-says {
+  margin: 0 0 14px;
+  border-left: 3px solid rgba(125, 211, 252, 0.82);
+  border-radius: 6px;
+  background: rgba(14, 165, 233, 0.09);
+  padding: 10px 12px;
+}
+
+.dengdeng-says span {
+  display: block;
+  margin-bottom: 4px;
+  color: #7dd3fc;
+  font-size: 13px;
+  font-weight: 850;
+}
+
+.dengdeng-says p {
+  margin: 0;
+  color: #dbeafe;
+  font-size: 14px;
+  line-height: 1.65;
+}
+
 .site-description {
   flex: 1;
   margin: 0 0 22px;
