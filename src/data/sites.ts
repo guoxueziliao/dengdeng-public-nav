@@ -125,7 +125,7 @@ export const sites: PublicSite[] = [
     priority: 94,
     highlight: {
       title: '工作日 Codex 时段',
-      note: '周一和周五固定时段 Codex 可用，一般四小时左右。',
+      note: '周一和周五固定时段 Codex 放肆蹬，一般四小时左右。',
     },
   },
   {
@@ -248,16 +248,17 @@ export const sites: PublicSite[] = [
     name: '登仙',
     domain: 'api.denxio.top',
     url: 'https://api.denxio.top',
-    summary: '纯公益站且进群给额度，优点是可能比较稳定，缺点是可能关闭注册。',
-    description: '注册进群给20刀，纯公益站，可能会关闭注册。',
-    tags: ['限注', '试用额度', '签到', '稳定'],
+    summary: '有签到和试用额度，倍率0.2且并发5，优点是每天可领额度，缺点是更高并发需要找管理员。',
+    description: '纯公益站，有签到和试用额度，倍率0.2；目前有限时三天活动，用完后每天可以领100刀。',
+    dengdengSays: '并发5，如果不够可以找管理员加，目前有限时三天活动，用完每天可以领100刀。',
+    tags: ['试用额度', '签到', '稳定'],
     kind: 'normal',
     priority: 62,
     registrationStatus: 'limited',
-    registrationNote: '可能关闭注册，进入前先确认注册状态。',
+    registrationNote: '目前有限时三天活动，活动和领取规则以站内为准。',
     highlight: {
-      title: '可能关闭注册',
-      note: '注册窗口不一定长期开放，想用的话优先确认。',
+      title: '限时三天活动',
+      note: '并发5，用完后每天可以领100刀，不够可找管理员加并发。',
     },
   },
   {
