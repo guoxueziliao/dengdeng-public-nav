@@ -114,6 +114,21 @@ export const sites: PublicSite[] = [
     priority: 98,
   },
   {
+    name: '桌崽呀',
+    domain: 'zhuozaiya.top',
+    url: 'https://zhuozaiya.top',
+    summary: '可用 Claude、GPT 和生图，优点是有签到和固定 Codex 时段，缺点是 Codex 放开时间主要集中在周一和周五。',
+    description: '提供 Claude、GPT、生图分组和签到额度，周一和周五有固定时段 Codex 可用。',
+    dengdengSays: '群主人很好，周一和周五固定时段Codex放肆蹬，一般是四小时左右。首字速度2-5秒左右。有问题也会迅速修复。',
+    tags: ['推荐', '签到', '生图', '稳定'],
+    kind: 'recommended',
+    priority: 94,
+    highlight: {
+      title: '工作日 Codex 时段',
+      note: '周一和周五固定时段 Codex 可用，一般四小时左右。',
+    },
+  },
+  {
     name: '卡卡AI中转站',
     domain: 'kaiaigo.com',
     url: 'https://kaiaigo.com',
