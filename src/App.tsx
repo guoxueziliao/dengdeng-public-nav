@@ -9,6 +9,7 @@ import { filters, sites, type SiteTag } from './data/sites'
 function App() {
   const [activeFilters, setActiveFilters] = useState<SiteTag[]>([])
   const [isContactVisible, setIsContactVisible] = useState(false)
+  const [isSearchFocused, setIsSearchFocused] = useState(false)
   const [searchText, setSearchText] = useState('')
 
   const visibleSites = useMemo(() => {
@@ -47,6 +48,40 @@ function App() {
       .filter((site) => site.highlight)
       .sort((a, b) => b.priority - a.priority || a.name.localeCompare(b.name))
   }, [])
+  const suggestionTerms = useMemo(() => {
+    const recommendedTerms = [
+      '免费模型',
+      'Claude',
+      'GPT',
+      'Codex',
+      '生图',
+      '签到',
+      '推荐',
+      '0.06:1',
+      '最低 0.083:1',
+    ]
+    const siteTerms = sites.flatMap((site) => [
+      site.name,
+      site.domain,
+      site.usdQuotaCost,
+      site.highlight?.title,
+      ...site.tags,
+      ...site.description.split(/[，。、；：,;:\s]+/).filter((term) => term.length >= 2 && term.length <= 28),
+    ])
+
+    return Array.from(new Set([...recommendedTerms, ...siteTerms].filter((term): term is string => Boolean(term))))
+  }, [])
+  const searchSuggestions = useMemo(() => {
+    const normalizedSearchText = searchText.trim().toLowerCase()
+
+    if (!normalizedSearchText) {
+      return suggestionTerms.slice(0, 9)
+    }
+
+    return suggestionTerms
+      .filter((term) => term.toLowerCase().includes(normalizedSearchText))
+      .slice(0, 9)
+  }, [searchText, suggestionTerms])
 
   const toggleFilter = (filter: SiteTag) => {
     setActiveFilters((currentFilters) =>
@@ -97,16 +132,39 @@ function App() {
           onToggle={toggleFilter}
         />
 
-        <label className="search-box">
-          <Search aria-hidden="true" size={18} />
-          <input
-            aria-label="搜索站点"
-            onChange={(event) => setSearchText(event.target.value)}
-            placeholder="搜索名称、模型、域名、标签或蹬蹬说"
-            type="search"
-            value={searchText}
-          />
-        </label>
+        <div className="search-panel">
+          <label className="search-box">
+            <Search aria-hidden="true" size={18} />
+            <input
+              aria-autocomplete="list"
+              aria-label="搜索站点"
+              onBlur={() => setIsSearchFocused(false)}
+              onChange={(event) => setSearchText(event.target.value)}
+              onFocus={() => setIsSearchFocused(true)}
+              placeholder="搜索名称、模型、域名、标签或蹬蹬说"
+              type="search"
+              value={searchText}
+            />
+          </label>
+          {isSearchFocused && searchSuggestions.length > 0 ? (
+            <div className="search-suggestions" role="listbox">
+              <span>{searchText.trim() ? '联想搜索' : '推荐搜索'}</span>
+              {searchSuggestions.map((suggestion) => (
+                <button
+                  key={suggestion}
+                  onMouseDown={(event) => {
+                    event.preventDefault()
+                    setSearchText(suggestion)
+                    setIsSearchFocused(false)
+                  }}
+                  type="button"
+                >
+                  {suggestion}
+                </button>
+              ))}
+            </div>
+          ) : null}
+        </div>
       </section>
 
       <section className="sponsor-strip" aria-label="站点维护说明">

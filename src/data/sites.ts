@@ -59,10 +59,6 @@ export const sites: PublicSite[] = [
     kind: 'official',
     priority: 112,
     usageNote: '免费模型名单和策略会变化，文档中部分模型会标注限时免费。',
-    highlight: {
-      title: '免费模型策略可能变化',
-      note: '适合临时测试编码代理，模型名单以 OpenCode 文档为准。',
-    },
   },
   {
     name: 'OpenRouter Free',
@@ -291,10 +287,6 @@ export const sites: PublicSite[] = [
     tags: ['免费模型', '试用额度', '签到'],
     kind: 'normal',
     priority: 60,
-    highlight: {
-      title: '免费模型系列',
-      note: 'default 每分钟20次，plus 和 pro 每分钟40次。',
-    },
   },
   {
     name: '北极星',
