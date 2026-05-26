@@ -93,6 +93,11 @@ function App() {
 
   return (
     <main className="page-shell">
+      <a className="floating-brand" href={siteConfig.siteUrl}>
+        <span>蹬蹬公益站导航</span>
+        <small>{siteConfig.siteUrl.replace('https://', '')}</small>
+      </a>
+
       <section className="hero-panel">
         <div className="hero-panel__heading">
           <div className="brand-mark" aria-hidden="true">
@@ -106,6 +111,9 @@ function App() {
 
         <p className="hero-copy">{siteConfig.description}</p>
         <p className="notice">{siteConfig.notice}</p>
+        <a className="share-source" href={siteConfig.siteUrl}>
+          分享认准：{siteConfig.siteUrl.replace('https://', '')}
+        </a>
 
         <div className="hero-meta" aria-label="站点概况">
           <span>共收录 {sites.length} 个站点</span>
@@ -205,6 +213,14 @@ function App() {
           <div className="empty-state">没有找到匹配的站点</div>
         )}
       </section>
+
+      <footer className="site-footer">
+        <div>
+          <strong>{siteConfig.name}</strong>
+          <span>公开公益站与免费模型导航</span>
+        </div>
+        <a href={siteConfig.siteUrl}>{siteConfig.siteUrl.replace('https://', '')}</a>
+      </footer>
     </main>
   )
 }
