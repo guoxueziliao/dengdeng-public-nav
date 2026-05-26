@@ -113,6 +113,23 @@ export const sites: PublicSite[] = [
     priority: 98,
   },
   {
+    name: '卡卡AI中转站',
+    domain: 'kaiaigo.com',
+    url: 'https://kaiaigo.com',
+    summary: '公测新站正在做限时空投，优点是注册和拉新额度可能较高，缺点是实际可领额度变化很快。',
+    description: 'KaiAiGo 公测中，已知注册基础额度约10刀；早期用户和群内活动曾出现1000刀、5000刀等空投，当前是否仍发放需以站内活动为准。',
+    tags: ['限注', '次抛', '新站'],
+    kind: 'normal',
+    priority: 92,
+    registrationStatus: 'limited',
+    registrationNote: '限时空投和注册额度不稳定，进入前先确认当前活动。',
+    usageNote: '目前还在拉新，适合尝试领取临时额度；不要把历史空投额度当作长期规则。',
+    highlight: {
+      title: '限时空投新站',
+      note: '公测期福利变化快，注册基础额度和空投额度以当前页面为准。',
+    },
+  },
+  {
     name: '次元工坊',
     domain: 'tokenwork.app',
     url: 'https://tokenwork.app',
