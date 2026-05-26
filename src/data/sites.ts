@@ -117,7 +117,7 @@ export const sites: PublicSite[] = [
     domain: 'kaiaigo.com',
     url: 'https://kaiaigo.com',
     summary: '公测新站正在做限时空投，优点是注册和拉新额度可能较高，缺点是实际可领额度变化很快。',
-    description: 'KaiAiGo 公测中，已知注册基础额度约10刀；早期用户和群内活动曾出现1000刀、5000刀等空投，当前是否仍发放需以站内活动为准。',
+    description: 'KaiAiGo 公测中，已知注册基础额度约10刀；早期用户和群内活动曾出现1000刀、500刀等空投，当前是否仍发放需以站内活动为准。',
     tags: ['限注', '次抛', '新站'],
     kind: 'normal',
     priority: 92,
