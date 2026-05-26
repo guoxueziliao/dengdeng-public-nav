@@ -72,10 +72,12 @@ export function SiteCard({ site }: SiteCardProps) {
         </div>
       ) : null}
       <p className="site-summary">{site.summary}</p>
-      <div className="dengdeng-says">
-        <span>蹬蹬说</span>
-        <p>{site.dengdengSays}</p>
-      </div>
+      {site.dengdengSays ? (
+        <div className="dengdeng-says">
+          <span>蹬蹬说</span>
+          <p>{site.dengdengSays}</p>
+        </div>
+      ) : null}
       <p className="site-description">{site.description}</p>
       <a className="open-link" href={site.url} rel="noreferrer" target="_blank">
         打开链接
