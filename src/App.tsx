@@ -1,4 +1,4 @@
-import { Clock3, ExternalLink, GitBranch, Mail, Megaphone } from 'lucide-react'
+import { Clock3, ExternalLink, GitBranch, Mail, Megaphone, Search } from 'lucide-react'
 import { useMemo, useState } from 'react'
 import './App.css'
 import { FilterBar } from './components/FilterBar'
@@ -9,12 +9,37 @@ import { filters, sites, type SiteTag } from './data/sites'
 function App() {
   const [activeFilters, setActiveFilters] = useState<SiteTag[]>([])
   const [isContactVisible, setIsContactVisible] = useState(false)
+  const [searchText, setSearchText] = useState('')
 
   const visibleSites = useMemo(() => {
+    const normalizedSearchText = searchText.trim().toLowerCase()
+
     return sites
       .filter((site) => activeFilters.every((filter) => site.tags.includes(filter)))
+      .filter((site) => {
+        if (!normalizedSearchText) {
+          return true
+        }
+
+        const searchableValues = [
+          site.name,
+          site.domain,
+          site.url,
+          site.summary,
+          site.description,
+          site.usdQuotaCost,
+          site.dengdengSays,
+          site.registrationNote,
+          site.usageNote,
+          site.highlight?.title,
+          site.highlight?.note,
+          ...site.tags,
+        ].filter((value): value is string => Boolean(value))
+
+        return searchableValues.some((value) => value.toLowerCase().includes(normalizedSearchText))
+      })
       .sort((a, b) => b.priority - a.priority || a.name.localeCompare(b.name))
-  }, [activeFilters])
+  }, [activeFilters, searchText])
 
   const recommendedCount = sites.filter((site) => site.tags.includes('推荐')).length
   const highlightedSites = useMemo(() => {
@@ -71,6 +96,17 @@ function App() {
           onReset={() => setActiveFilters([])}
           onToggle={toggleFilter}
         />
+
+        <label className="search-box">
+          <Search aria-hidden="true" size={18} />
+          <input
+            aria-label="搜索站点"
+            onChange={(event) => setSearchText(event.target.value)}
+            placeholder="搜索名称、模型、域名、标签或蹬蹬说"
+            type="search"
+            value={searchText}
+          />
+        </label>
       </section>
 
       <section className="sponsor-strip" aria-label="站点维护说明">
@@ -105,9 +141,11 @@ function App() {
       </section>
 
       <section className="site-grid" aria-label="公益站列表">
-        {visibleSites.map((site) => (
-          <SiteCard key={site.domain} site={site} />
-        ))}
+        {visibleSites.length > 0 ? (
+          visibleSites.map((site) => <SiteCard key={site.domain} site={site} />)
+        ) : (
+          <div className="empty-state">没有找到匹配的站点</div>
+        )}
       </section>
     </main>
   )
