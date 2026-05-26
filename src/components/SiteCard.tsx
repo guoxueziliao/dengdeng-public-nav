@@ -5,7 +5,7 @@ const tagClass: Record<SiteTag, string> = {
   推荐: 'tag-recommend',
   免费模型: 'tag-free-model',
   限注: 'tag-limited',
-  次抛: 'tag-disposable',
+  试用额度: 'tag-trial',
   签到: 'tag-checkin',
   生图: 'tag-image',
   稳定: 'tag-stable',
