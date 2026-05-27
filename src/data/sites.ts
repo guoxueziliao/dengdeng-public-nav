@@ -85,6 +85,18 @@ export const sites: PublicSite[] = [
     usageNote: '免费推理额度、并发和支持模型会变化，使用前以魔搭模型页为准。',
   },
   {
+    name: 'BlazeAPI',
+    domain: 'blazeai.boxu.dev',
+    url: 'https://blazeai.boxu.dev/',
+    summary: '免费计划每天1000次请求，模型覆盖文本、视觉、生图和工具调用，缺点是每分钟20次且部分模型健康状态会变化。',
+    description: 'BlazeAPI 免费计划每天1000次请求，每分钟20次，支持 SSE 流式；模型包含 Kimi K2.5、MiniMax、DeepSeek R1、Gemma4、Grok、Qwen3.5/Qwen3.6 等，部分模型支持 vision、image gen、tools。',
+    usdQuotaCost: '免费',
+    tags: ['推荐', '免费模型', '生图', '新站'],
+    kind: 'normal',
+    priority: 106,
+    usageNote: 'Base URL 为 https://blazeai.boxu.dev/api/，截图提示不要使用 /v1；模型健康状态和免费可用模型以站内 Models 页面为准。',
+  },
+  {
     name: 'abrns',
     domain: 'new-api.abrdns.com',
     url: 'https://new-api.abrdns.com',
