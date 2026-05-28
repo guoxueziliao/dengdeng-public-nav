@@ -196,6 +196,18 @@ export const sites: PublicSite[] = [
     usageNote: '部分分组倍率较高或暂不可用，使用前看站内分组状态；试用额度需要找群主领取。',
   },
   {
+    name: '初叶 Furry API',
+    domain: 'ai.chuyel.top',
+    url: 'https://ai.chuyel.top/',
+    summary: '使用小叶币的新站，注册送6且只能通过签到、兑换码或群内发放获取，优点是不会收费，缺点是模型量少且部分模型可能不可用。',
+    description: '站点不算传统公益站，小叶币只可通过注册、签到、不定时群内兑换码或找群主获取；部分模型可能有速率限制或不可用，模型列表建议用 OpenAI 协议接口自行获取。',
+    usdQuotaCost: '小叶币',
+    tags: ['试用额度', '签到'],
+    kind: 'normal',
+    priority: 57,
+    usageNote: '30天未发言的成员有概率被移除；遇到模型不可用、无法登录或站点打不开，优先联系管理员。站长说明以后不会收费，最多只会关站。',
+  },
+  {
     name: '次元工坊',
     domain: 'tokenwork.app',
     url: 'https://tokenwork.app',
